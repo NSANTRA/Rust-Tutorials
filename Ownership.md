@@ -33,6 +33,8 @@ Ownership is a set of rules that allows Rust to govern how the program manages m
     println!("{}", s1);                 // Will throw an error because since the value of s1 has been moved to s2, Rust will delete the s1 variable.
 ```
 
+Since the `s1` variable will not be accessible, it is solved using `References`.
+
 The variables `s1` and `s2` act as pointers to the actual value that points to the address in heap where the value is stored. The variables consist of address, length and capacity. Both the variables will point to a single address in heap which prevent memory wastage which happens in clones. When the scope of a variable or assignment ends, Rust calls `drop` function that helps prevent memory wastage.
 
 ```rust
