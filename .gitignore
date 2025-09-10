@@ -1,7 +1,4 @@
 # Ignore Rust build artifacts for all projects
 **/target/
 
-# Ignore rustfmt backup files
-**/*.rs.bk
-
 .vscode
