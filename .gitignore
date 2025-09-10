@@ -3,3 +3,5 @@
 
 # Ignore rustfmt backup files
 **/*.rs.bk
+
+.vscode
