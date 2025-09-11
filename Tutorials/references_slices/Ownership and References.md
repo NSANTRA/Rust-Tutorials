@@ -118,3 +118,12 @@ This condition is usedful to prevent race conditions - where multiple processes 
 
     println!("{r2}");
 ```
+
+### Slice Reference
+It is a reference that points to a sequence of elements from the main collection. Slice is a type of reference so it does not have ownership. Example:
+```rust
+    let s = String::from("Hello, I am learning Rust");
+
+    let a = &s[0..5];           // Output: Hello
+```
+In the above code, variable `a` is a string type slice reference.
