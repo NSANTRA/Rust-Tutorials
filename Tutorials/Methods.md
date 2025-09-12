@@ -1,0 +1,2 @@
+# Method Syntax
+Methods are similar to functions but methods are declared and defined with a structure. To define a method inside a structure, use the keyword `impl` meaning implementation. The methods declared within a structure are known as associated functions.

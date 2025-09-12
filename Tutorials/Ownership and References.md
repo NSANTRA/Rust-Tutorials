@@ -34,6 +34,17 @@ Ownership is a set of rules that allows Rust to govern how the program manages m
 ```
 The above code will **move** the value of `s1` variable to `s2`, and the `s1` **variable** will be dropped by Rust and hence the error.
 
+<strong>
+Note: There are exceptions to this rules. Some data types implement the `Copy` trait, and therefore do not lose ownership. Example:
+<ul>
+    <li>All integers types</li>
+    <li>Boolean</li>
+    <li>Floating types</li>
+    <li>Character types</li>
+    <li>Tuples (only if they contain the above mentioned data types, otherwise not)</li>
+</ul>
+</strong>
+
 The variables `s1` and `s2` act as pointers to the actual value that points to the address in heap where the value is stored. The variables consist of address, length and capacity. Both the variables will point to a single address in heap which prevent memory wastage which happens in clones. When the scope of a variable or assignment ends, Rust calls `drop` function that helps prevent memory wastage.
 
 ```rust
