@@ -48,15 +48,16 @@ fn main() {
     // Since vectors can store only similar type of values, we can work around using enum to store
     // different types of values.
 
-    enum SpreadSheetCell {
-        Int(i64),
-        Float(f64),
-        Text(String)
-    }
+    // enum SpreadSheetCell {
+    //     Int(i64),
+    //     Float(f64),
+    //     Text(String)
+    // }
 
-    let row = vec![
-        SpreadSheetCell::Int(64),
-        SpreadSheetCell::Float(64.0)
-        SpreadSheetCell::String(String::from("Row 1"))
-    ];
+    // There will an error since Rust needs to know the data types at compile time.
+    // let row = vec![
+    //     SpreadSheetCell::Int(64),
+    //     SpreadSheetCell::Float(64.0)
+    //     SpreadSheetCell::String(String::from("Row 1"))
+    // ];
 }
