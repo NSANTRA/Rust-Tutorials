@@ -10,8 +10,16 @@ fn main() {
     v.push(3);
     v.push(4);
 
-    for &i in &v {
+    // Iterating over values. The below loop is immutable
+    for i in &v {
         print!("{} ", i);
+    }
+    println!();
+
+    // The below loop is mutable.
+    // & is used for referencing and * is used for dereferncing
+    for i in &mut v {
+        print!("{} ", *i + 20);
     }
     println!();
     
@@ -37,4 +45,18 @@ fn main() {
             println!("There is no third element")
         }
     }
+    // Since vectors can store only similar type of values, we can work around using enum to store
+    // different types of values.
+
+    enum SpreadSheetCell {
+        Int(i64),
+        Float(f64),
+        Text(String)
+    }
+
+    let row = vec![
+        SpreadSheetCell::Int(64),
+        SpreadSheetCell::Float(64.0)
+        SpreadSheetCell::String(String::from("Row 1"))
+    ];
 }
