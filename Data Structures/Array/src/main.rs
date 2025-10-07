@@ -1,4 +1,4 @@
-use rand::{rng, Rng};
+// use rand::{rng, Rng};
 use std::{io::stdin};
 
 // fn create_vector(vec: &mut Vec<i64>) -> &mut Vec<i64> {
