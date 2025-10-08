@@ -1,33 +1,35 @@
 use std::io::stdin;
 
-fn push_stack(vec: &mut Vec<i64>, length: usize) {
+fn enqueue(vec: &mut Vec<i64>, length: usize) {
     match vec.len() >= length {
         true => {
             println!("Overflow");
         }
         false => {
-            let mut num: String = String::new();
+            let mut value: String = String::new();
+            print!("Enter a number:");
             stdin()
-                .read_line(&mut num)
+                .read_line(&mut value)
                 .expect("Failed to read the line");
 
-            match num.trim().parse::<i64>() {
-                Ok(num) => {
-                    vec.push(num);
-                    println!("Value {} added to the vector", num);
+            match value.trim().parse::<i64>() {
+                Ok(value) => {
+                    vec.push(value);
+                    println!("Enqueued value {} to the queue", value);
                 }
                 Err(_) => {
-                    println!("Please enter a number");
+                    println!("Please enter a valid number");
                 }
             }
+            value.clear();
         }
     }
 }
 
-fn pop_stack(vec: &mut Vec<i64>) {
-    match vec.pop() {
-        Some(value) => {
-            println!("The popped value is {}", value);
+fn dequeue(vec: &mut Vec<i64>) {
+    match vec.get(0) {
+        Some(_) => {
+            println!("Value {} dequeued from queue", vec.remove(0));
         }
         None => {
             println!("Underflow");
@@ -38,23 +40,30 @@ fn pop_stack(vec: &mut Vec<i64>) {
 fn peek(vec: &Vec<i64>) {
     match vec.is_empty() {
         true => {
-            println!("Stack is empty!");
+            println!("Queue is empty");
         }
         false => {
-            println!("The topmost value of the stack is {}", vec[vec.len() - 1])
+            println!("The front-most value in the queue is {}", vec[0]);
         }
     }
 }
 
 fn display(vec: &Vec<i64>) {
-    println!("Vector is {:?}", vec)
+    match vec.is_empty() {
+        true => {
+            println!("Queue is empty");
+        }
+        false => {
+            println!("The queue is {:?}", vec);
+        }
+    }
 }
 
 fn main() {
     let mut num: String = String::new();
     let mut vec: Vec<i64> = Vec::new();
 
-    println!("Enter the maximum length of the stack:");
+    println!("Enter the maximum length of the queue:");
     stdin()
         .read_line(&mut num)
         .expect("Failed to read the line");
@@ -64,8 +73,8 @@ fn main() {
     let mut choice: String = String::new();
 
     loop {
-        println!("1. Push");
-        println!("2. Pop");
+        println!("1. Enqueue");
+        println!("2. Dequeue");
         println!("3. Peek");
         println!("4. Display");
         println!("5. Exit");
@@ -76,10 +85,10 @@ fn main() {
 
         match choice.trim() {
             "1" => {
-                push_stack(&mut vec, length);
+                enqueue(&mut vec, length);
             }
             "2" => {
-                pop_stack(&mut vec);
+                dequeue(&mut vec);
             }
             "3" => {
                 peek(&mut vec);
